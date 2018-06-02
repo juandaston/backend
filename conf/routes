@@ -1,0 +1,14 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+POST    /comandos                                   co.com.consultorio.aplicacion.comandos.CommandProcessor.procesarComando
+
+GET     /paciente/listarPacientes/:init/:limit      co.com.consultorio.aplicacion.api.queries.PacienteQueries.listarPacientes(init: String,limit: String)
+GET     /paciente/paciente-por-cedula/:tipoId/:numId         co.com.consultorio.aplicacion.api.queries.PacienteQueries.pacientePorCedula(tipoId: String, numId: String)
+GET     /paciente/paciente-por-id/:id                        co.com.consultorio.aplicacion.api.queries.PacienteQueries.pacientePorId(id: String)
+GET     /autorizacion/validarUsuario/               co.com.consultorio.aplicacion.api.queries.AutenticacionQueries.validarUsuario()
+GET     /antecedente/antecedentes-por-id-paciente/:id                        co.com.consultorio.aplicacion.api.queries.AntecedentesQueries.antecedentesPorIdPaciente(id: String)
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
