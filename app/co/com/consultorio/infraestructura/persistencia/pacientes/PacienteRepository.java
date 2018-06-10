@@ -1,13 +1,13 @@
 package co.com.consultorio.infraestructura.persistencia.pacientes;
 
-import co.com.consultorio.domain.pacientes.Paciente;
 import com.google.inject.Inject;
 import org.skife.jdbi.v2.DBI;
-import play.Logger;
 import play.db.Database;
-import play.libs.Json;
 
+import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PacienteRepository implements IPacienteRepository {
 
@@ -22,8 +22,16 @@ public class PacienteRepository implements IPacienteRepository {
     }
 
     @Override
-    public Collection<PacienteDTO> listarPacientes(int init, int limit) {
-        return new DBI(db.getDataSource()).onDemand(PacienteDAO.class).listarPacientes(init, limit);
+    public Map<String, Object> listarPacientes(int init, int limit) {
+        Map<String, Object> stringObjectMap = new HashMap<>();
+        Collection<PacienteDTO> pacienteDTOS = new DBI(db.getDataSource()).onDemand(PacienteDAO.class).listarPacientes(init, limit);
+
+        BigDecimal totalRegistros = new DBI(db.getDataSource()).onDemand(PacienteDAO.class).contarPacientes();
+
+        stringObjectMap.put("pacientes", pacienteDTOS);
+        stringObjectMap.put("totalRegistros", totalRegistros);
+
+        return stringObjectMap;
     }
 
     @Override

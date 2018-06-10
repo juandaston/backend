@@ -2,8 +2,12 @@ package co.com.consultorio.aplicacion.comandos;
 
 import co.com.consultorio.aplicacion.comandos.actualizarPaciente.ActualizarPacienteCommand;
 import co.com.consultorio.aplicacion.comandos.actualizarPaciente.ActualizarPacienteSerializer;
+import co.com.consultorio.aplicacion.comandos.editarAntecedente.EditarAntecedenteCommand;
+import co.com.consultorio.aplicacion.comandos.editarAntecedente.EditarAntecedenteSerializer;
 import co.com.consultorio.aplicacion.comandos.finalizarConsulta.FinalizarConsultaCommand;
 import co.com.consultorio.aplicacion.comandos.finalizarConsulta.FinalizarConsultaSerializer;
+import co.com.consultorio.aplicacion.comandos.ingresarAntecedente.IngresarAntecedenteCommand;
+import co.com.consultorio.aplicacion.comandos.ingresarAntecedente.IngresarAntecedenteSerializer;
 import co.com.consultorio.aplicacion.comandos.ingresarpaciente.IngresarPacienteCommand;
 import co.com.consultorio.aplicacion.comandos.ingresarpaciente.IngresarPacienteSerializer;
 import com.google.inject.Inject;
@@ -24,14 +28,18 @@ public class CommandProvider {
     @Inject
     public CommandProvider(IngresarPacienteCommand ingresarPacienteCommand,
                            ActualizarPacienteCommand actualizarPacienteCommand,
-                           FinalizarConsultaCommand FinalizarConsultaCommand
+                           FinalizarConsultaCommand finalizarConsultaCommand,
+                           IngresarAntecedenteCommand ingresarAntecedenteCommand,
+                           EditarAntecedenteCommand editarAntecedenteCommand
 
     ) {
 
         this.commands = new HashMap<>();
         commands.put("IngresarPaciente", Tuple.of(new IngresarPacienteSerializer(), ingresarPacienteCommand));
         commands.put("ActualizarPaciente", Tuple.of(new ActualizarPacienteSerializer(), actualizarPacienteCommand));
-        commands.put("FinalizarConsulta", Tuple.of(new FinalizarConsultaSerializer(), FinalizarConsultaCommand));
+        commands.put("FinalizarConsulta", Tuple.of(new FinalizarConsultaSerializer(), finalizarConsultaCommand));
+        commands.put("IngresarAntecedente", Tuple.of(new IngresarAntecedenteSerializer(), ingresarAntecedenteCommand));
+        commands.put("EditarAntecedente", Tuple.of(new EditarAntecedenteSerializer(), editarAntecedenteCommand));
     }
 
     public Tuple2<? extends CommandDeserializer, Command> provide(String nombreComando) {

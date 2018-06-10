@@ -17,6 +17,9 @@ public interface PacienteDAO {
     @SqlQuery("SELECT * FROM TBL_PACIENTES LIMIT :limit OFFSET :init")
     Collection<PacienteDTO> listarPacientes(@Bind("init") int init, @Bind("limit") int limit);
 
+    @SqlQuery("SELECT COUNT(*) FROM TBL_PACIENTES")
+    BigDecimal contarPacientes();
+
     @SqlQuery("SELECT * FROM TBL_PACIENTES " +
             "WHERE TIPO_IDENTIFICACION = :tipoId " +
             "AND NUMERO_INDENTIFICACION = :numId")

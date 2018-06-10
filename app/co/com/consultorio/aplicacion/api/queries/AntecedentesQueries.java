@@ -7,6 +7,7 @@ import play.libs.Json;
 import play.mvc.Result;
 
 import java.util.Collection;
+import java.util.Map;
 
 import static play.mvc.Results.ok;
 
@@ -15,10 +16,9 @@ public class AntecedentesQueries {
     @Inject
     private AntecedenteRepository antecedenteRepository;
 
-    public Result antecedentesPorIdPaciente(String id){
-        System.out.println("sdfsdfds");
-        Collection<AntecedenteDTO> antecedentesPorIdPaciente =
-                antecedenteRepository.antecedentePorIdPaciente(id);
+    public Result antecedentesPorIdPaciente(String id, String init, String limit){
+        Map<String, Object> antecedentesPorIdPaciente =
+                antecedenteRepository.antecedentePorIdPaciente(id, init, limit);
         return ok(Json.toJson(antecedentesPorIdPaciente));
     }
 }

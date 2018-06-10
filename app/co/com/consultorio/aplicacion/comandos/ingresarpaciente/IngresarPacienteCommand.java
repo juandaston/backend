@@ -2,8 +2,7 @@ package co.com.consultorio.aplicacion.comandos.ingresarpaciente;
 
 import co.com.consultorio.aplicacion.api.queries.modelo.Usuario;
 import co.com.consultorio.aplicacion.comandos.Command;
-import co.com.consultorio.domain.pacientes.PacienteFactory;
-import co.com.consultorio.infraestructura.persistencia.pacientes.IPacienteRepository;
+import co.com.consultorio.domain.paciente.PacienteFactory;
 import co.com.consultorio.infraestructura.persistencia.pacientes.PacienteDTO;
 import co.com.consultorio.infraestructura.persistencia.pacientes.PacienteRepository;
 import com.google.inject.Inject;

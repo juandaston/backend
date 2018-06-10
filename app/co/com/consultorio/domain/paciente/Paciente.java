@@ -1,4 +1,4 @@
-package co.com.consultorio.domain.pacientes;
+package co.com.consultorio.domain.paciente;
 
 public class Paciente {
     private String tipoIdentificacion;

@@ -1,4 +1,4 @@
-package co.com.consultorio.domain.pacientes;
+package co.com.consultorio.domain.paciente;
 
 import co.com.consultorio.aplicacion.comandos.actualizarPaciente.ActualizarPacienteRequest;
 import co.com.consultorio.aplicacion.comandos.ingresarpaciente.IngresarPacienteRequest;

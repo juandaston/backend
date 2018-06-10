@@ -9,6 +9,6 @@ GET     /paciente/listarPacientes/:init/:limit      co.com.consultorio.aplicacio
 GET     /paciente/paciente-por-cedula/:tipoId/:numId         co.com.consultorio.aplicacion.api.queries.PacienteQueries.pacientePorCedula(tipoId: String, numId: String)
 GET     /paciente/paciente-por-id/:id                        co.com.consultorio.aplicacion.api.queries.PacienteQueries.pacientePorId(id: String)
 GET     /autorizacion/validarUsuario/               co.com.consultorio.aplicacion.api.queries.AutenticacionQueries.validarUsuario()
-GET     /antecedente/antecedentes-por-id-paciente/:id                        co.com.consultorio.aplicacion.api.queries.AntecedentesQueries.antecedentesPorIdPaciente(id: String)
+GET     /antecedente/antecedentes-por-id-paciente/:id/:init/:limit                        co.com.consultorio.aplicacion.api.queries.AntecedentesQueries.antecedentesPorIdPaciente(id: String, init: String,limit: String)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -8,6 +8,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.Collection;
+import java.util.Map;
 
 public class PacienteQueries extends Controller {
 
@@ -15,7 +16,7 @@ public class PacienteQueries extends Controller {
     private PacienteRepository pacienteRepository;
 
     public Result listarPacientes(String init, String limit) {
-        Collection<PacienteDTO> listaPacientes =
+        Map<String, Object> listaPacientes =
                 pacienteRepository.listarPacientes(new Integer(init), new Integer(limit));
         return ok(Json.toJson(listaPacientes));
     }

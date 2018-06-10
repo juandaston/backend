@@ -23,6 +23,13 @@ public class AntecedenteDTO {
         this.fechaCreacion = fechaCreacion;
     }
 
+    public AntecedenteDTO(BigDecimal idAntecedentes, String idPaciente, String tipo, String descripcion) {
+        this.idAntecedentes = idAntecedentes;
+        this.idPaciente = idPaciente;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+    }
+
     public BigDecimal getIdAntecedentes() {
         return idAntecedentes;
     }

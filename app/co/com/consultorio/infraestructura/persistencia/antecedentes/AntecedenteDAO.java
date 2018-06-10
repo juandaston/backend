@@ -13,57 +13,35 @@ import java.util.Collection;
 public interface AntecedenteDAO {
 
     @SqlQuery("SELECT * FROM TBL_ANTECEDENTES " +
-            "WHERE ID_PACIENTE = :idPaciente ")
-    Collection<AntecedenteDTO> antecedentePorIdPaciente(@Bind("idPaciente") String idPaciente);
+            "WHERE ID_PACIENTE = :idPaciente LIMIT :init,:limit")
+    Collection<AntecedenteDTO> antecedentePorIdPacientePaginado(@Bind("idPaciente") String idPaciente,
+                                                        @Bind("init") BigDecimal init,
+                                                        @Bind("limit") BigDecimal limit);
 
-    @SqlUpdate("INSERT INTO TBL_PACIENTES (PRIMER_NOMBRE," +
-            "SEGUNDO_NOMBRE," +
-            "PRIMER_APELLIDO," +
-            "SEGUNDO_APELLIDO," +
-            "TIPO_IDENTIFICACION," +
-            "NUMERO_INDENTIFICACION," +
-            "CELULAR," +
-            "DIRECCION," +
-            "TELEFONO," +
-            "ESTADO_CIVIL," +
-            "FECHA_NACIMIENTO," +
-            "PROFESION," +
-            "OBSERVACIONES," +
-            "SEXO)" +
+    @SqlQuery("SELECT COUNT(*) FROM TBL_ANTECEDENTES " +
+            "WHERE ID_PACIENTE = :idPaciente")
+    BigDecimal contarRegistrosPorPaciente(@Bind("idPaciente") String idPaciente);
+
+    @SqlUpdate("INSERT INTO TBL_ANTECEDENTES (ID_PACIENTE," +
+            "TIPO," +
+            "DESCRIPCION," +
+            "FECHA_CREACION)" +
             "VALUES (" +
-            ":primerNombre," +
-            ":segundoNombre," +
-            ":primerApellido," +
-            ":segundoApellido," +
-            ":tipoIdentificacion," +
-            ":numeroIdentificacion," +
-            ":celular," +
-            ":direccion," +
-            ":telefono," +
-            ":estadoCivil," +
-            ":fechaNacimiento," +
-            ":profesion," +
-            ":observaciones," +
-            ":sexo);")
+            ":idPaciente," +
+            ":tipo," +
+            ":descripcion," +
+            "NOW());")
 
-    long agregarAntecedente(@Bind("idAntecedente") String idAntecedente);
+    long agregarAntecedente(@Bind("idPaciente") String idPaciente,
+                            @Bind("tipo") String tipo,
+                            @Bind("descripcion") String descripcion);
 
-    @SqlUpdate("UPDATE TBL_PACIENTES SET " +
-            "PRIMER_NOMBRE =:primerNombre," +
-            "SEGUNDO_NOMBRE =:segundoNombre," +
-            "PRIMER_APELLIDO =:primerApellido," +
-            "SEGUNDO_APELLIDO =:segundoApellido," +
-            "TIPO_IDENTIFICACION =:tipoIdentificacion," +
-            "NUMERO_INDENTIFICACION =:numeroIdentificacion," +
-            "CELULAR =:celular," +
-            "DIRECCION =:direccion," +
-            "TELEFONO =:telefono," +
-            "ESTADO_CIVIL =:estadoCivil," +
-            "FECHA_NACIMIENTO =:fechaNacimiento," +
-            "PROFESION =:profesion," +
-            "OBSERVACIONES =:observaciones," +
-            "SEXO =:sexo " +
-            "WHERE ID_PACIENTE =:idPaciente")
+    @SqlUpdate("UPDATE TBL_ANTECEDENTES SET " +
+            "TIPO =:tipo," +
+            "DESCRIPCION =:descripcion " +
+            "WHERE ID_ANTECEDENTES =:idAntecedente;")
 
-    long updateAntecedente(@Bind("idAntecedente") BigDecimal idAntecedente);
+    long updateAntecedente(@Bind("idAntecedente") BigDecimal idAntecedente,
+                           @Bind("tipo") String tipo,
+                           @Bind("descripcion") String descripcion);
 }
