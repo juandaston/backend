@@ -9,7 +9,6 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Date;
 
 @RegisterMapper(PacienteMapperJdbi.class)
 public interface PacienteDAO {
@@ -69,7 +68,7 @@ public interface PacienteDAO {
                                             @Bind("celular") String celular,
                                             @Bind("telefono") String telefono,
                                             @Bind("direccion") String direccion,
-                                            @Bind("fechaNacimiento") java.sql.Date fechaNacimiento,
+                                            @Bind("fechaNacimiento") Timestamp fechaNacimiento,
                                             @Bind("profesion") String profesion,
                                             @Bind("observaciones") String observaciones,
                                             @Bind("sexo") String sexo,

@@ -13,9 +13,9 @@ public abstract class AntecedenteTransaccion {
     @Transaction
     public long add(AntecedenteDTO antecedenteDTO) {
         long id = antecedenteDAO().agregarAntecedente(
-                antecedenteDTO.getIdPaciente(),
-                antecedenteDTO.getTipo(),
-                antecedenteDTO.getDescripcion());
+                antecedenteDTO.getIdPaciente().trim(),
+                antecedenteDTO.getTipo().trim(),
+                antecedenteDTO.getDescripcion().trim());
 
         Logger.info(String.format("Antecedente %s registrado con exito", id));
         return id;
@@ -25,8 +25,8 @@ public abstract class AntecedenteTransaccion {
     public long update(AntecedenteDTO antecedenteDTO) {
         long id = antecedenteDAO().updateAntecedente(
                 antecedenteDTO.getIdAntecedentes(),
-                antecedenteDTO.getTipo(),
-                antecedenteDTO.getDescripcion());
+                antecedenteDTO.getTipo().trim(),
+                antecedenteDTO.getDescripcion().trim());
 
         Logger.info(String.format("Antecedente %s editado con exito", id));
         return id;

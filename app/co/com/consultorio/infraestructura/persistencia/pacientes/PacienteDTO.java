@@ -1,10 +1,7 @@
 package co.com.consultorio.infraestructura.persistencia.pacientes;
 
-import org.joda.time.DateTime;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class PacienteDTO {
     private BigDecimal idPaciente;
